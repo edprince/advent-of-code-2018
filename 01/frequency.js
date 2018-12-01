@@ -1,3 +1,14 @@
+function findFrequency(input) {
+  input = input.split('\n');
+  let base = 0;
+  input.forEach(number => {
+    let operation = number.slice(0, 1);
+    let freq = Number(number.slice(1));
+    operation === '+' ? base += freq : base -= freq;
+  });
+  return base
+}
+
 let input = `+9
 +15
 -14
@@ -1032,12 +1043,5 @@ let input = `+9
 +17
 +120917`;
 
-input = input.split('\n');
-let base = 0;
-input.forEach(number => {
-  let operation = number.slice(0, 1);
-  let freq = Number(number.slice(1));
-  operation === '+' ? base += freq : base -= freq;
-});
+console.log(findFrequency(input));
 
-console.log(base);

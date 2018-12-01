@@ -1,3 +1,25 @@
+function findDuplicateFrequency(input) {
+  let base = 0;
+  let dupe = false;
+  let seen = [];
+  input = input.split('\n');
+  while (dupe === false) {
+    for (var i in input) {
+      let number = input[i];
+      let operation = number.slice(0, 1);
+      let freq = Number(number.slice(1));
+      operation === '+' ? base += freq : base -= freq;
+      if (seen.includes(base)) {
+        dupe = base;
+        break;
+      } else {
+        seen.push(base);
+      }
+    };
+  }
+  return base;
+}
+
 let input = `+9
 +15
 -14
@@ -1031,27 +1053,5 @@ let input = `+9
 +8
 +17
 +120917`;
-
-function findDuplicateFrequency(input) {
-  let base = 0;
-  let dupe = false;
-  let seen = [];
-  input = input.split('\n');
-  while (dupe === false) {
-    for (var i in input) {
-      let number = input[i];
-      let operation = number.slice(0, 1);
-      let freq = Number(number.slice(1));
-      operation === '+' ? base += freq : base -= freq;
-      if (seen.includes(base)) {
-        dupe = base;
-        break;
-      } else {
-        seen.push(base);
-      }
-    };
-  }
-  return base;
-}
 
 console.log(findDuplicateFrequency(input));
